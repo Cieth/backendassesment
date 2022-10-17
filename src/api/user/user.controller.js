@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('./user.model');
-const { signUp, signIn } = require('./user.service');
+const { signUp, signIn, listOfUsers } = require('./user.service');
 
 const signUpHandler = async (req, res) => {
   const userData = req.body;
@@ -46,7 +46,7 @@ const signInHandler = async (req, res) => {
 
     return res
       .status(201)
-      .json({ message: 'login successful', data: { email, token } });
+      .json({ message: 'login successful', data: { token } });
   } catch (error) {
     return res
       .status(400)
@@ -54,4 +54,15 @@ const signInHandler = async (req, res) => {
   }
 };
 
-module.exports = { signUpHandler, signInHandler };
+const listOfUsersHandler = async (req, res) => {
+  try {
+    const user = await listOfUsers(User);
+    res.status(200).json({ message: 'users found', data: user });
+  } catch (error) {
+    return res
+      .status(400)
+      .json({ message: 'Error while looking for users', error: error.message });
+  }
+};
+
+module.exports = { signUpHandler, signInHandler, listOfUsersHandler };

@@ -8,4 +8,8 @@ const signIn = (email) => {
   return User.findOne({ email });
 };
 
-module.exports = { signUp, signIn };
+const listOfUsers = (users) => {
+  return User.find({ users });
+};
+
+module.exports = { signUp, signIn, listOfUsers };
