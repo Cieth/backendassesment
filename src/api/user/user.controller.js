@@ -32,7 +32,14 @@ const signUpHandler = async (req, res) => {
 const signInHandler = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await signIn(email);
+    const user = await signIn(email).populate({
+      path: 'list',
+      select: 'name todo',
+      populate: {
+        path: 'todo',
+        select: 'title description',
+      },
+    });
     if (!user) {
       throw new Error(`This user does not exist`);
     }
@@ -45,8 +52,8 @@ const signInHandler = async (req, res) => {
     });
 
     return res
-      .status(201)
-      .json({ message: 'login successful', data: { token } });
+      .status(200)
+      .json({ message: 'login successful', data: { user, token } });
   } catch (error) {
     return res
       .status(400)
@@ -56,7 +63,7 @@ const signInHandler = async (req, res) => {
 
 const listOfUsersHandler = async (req, res) => {
   try {
-    const user = await listOfUsers(User);
+    const user = await listOfUsers();
     res.status(200).json({ message: 'users found', data: user });
   } catch (error) {
     return res

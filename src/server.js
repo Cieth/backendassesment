@@ -12,5 +12,6 @@ app.listen(port, () => {
   expressConfig(app);
   connect();
   routesConfig(app);
+
   console.log(`listening on http://localhost:${port} in ${NODE_ENV}`);
 });

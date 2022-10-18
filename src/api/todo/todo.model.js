@@ -1,6 +1,6 @@
-const { model, Squema } = require('mongoose');
+const { model, Schema } = require('mongoose');
 
-const todoSquema = new Squema(
+const todoSchema = new Schema(
   {
     title: {
       type: String,
@@ -10,11 +10,16 @@ const todoSquema = new Squema(
       type: String,
       required: true,
     },
-    link: String,
+    link: {
+      type: String,
+      required: false,
+    },
+    list: { type: Schema.Types.ObjectId, ref: 'List' },
   },
+
   { timestamps: true }
 );
 
-const Todo = model('Todo', todoSquema);
+const Todo = model('Todo', todoSchema);
 
 module.exports = Todo;

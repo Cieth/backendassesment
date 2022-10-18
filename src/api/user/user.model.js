@@ -32,6 +32,7 @@ const userSchema = new Schema(
       type: 'string',
       required: true,
     },
+    list: [{ type: Schema.Types.ObjectId, ref: 'List' }],
   },
   { timestamps: true }
 );
