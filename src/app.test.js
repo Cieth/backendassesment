@@ -37,7 +37,7 @@ describe('App', () => {
     'X-Common-Header': 'value',
   };
   //Need to change this info every test or you'll get an 400 bc it's already created->
-  let userCreate = { email: 'test2567@gmail.com', password: 'testestest' };
+  let userCreate = { email: 'test1996@gmail.com', password: 'testestest' };
 
   it('Should create a user with success code', async () => {
     const res = await req(app)
@@ -72,7 +72,7 @@ describe('App', () => {
     expect(res.statusCode).toBe(200);
     //console.log(JSON.parse(res.text));
   });
-  const list2Search = '6352e5921a5569ed778ff123'; // place the id of the list
+  const list2Search = '6352e773c452e680c8126734'; // place the id of the list
   it('Should get a list with success code', async () => {
     const res = await req(app)
       .get(`/api/favs/${list2Search}`)
@@ -94,7 +94,7 @@ describe('App', () => {
     //console.log(JSON.parse(res.text));
   });
   //place the id of the list to delete -> need to change if u do another test
-  const list2delete = '6352e7460ad12d96c3f869de';
+  const list2delete = '6352f2c58d1bb46f798aab3d';
   it('Should delete a list with success code', async () => {
     const res = await req(app)
       .delete(`/api/favs/${list2delete}`)
