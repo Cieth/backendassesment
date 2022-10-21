@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const connect = require('./database');
+const { connect } = require('./database');
 const routesConfig = require('./routes.config');
 const expressConfig = require('./express');
 
@@ -15,3 +15,5 @@ app.listen(port, () => {
 
   console.log(`listening on http://localhost:${port} in ${NODE_ENV}`);
 });
+
+module.exports = app;

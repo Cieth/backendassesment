@@ -2,7 +2,10 @@ const { model, Schema } = require('mongoose');
 
 const listSchema = new Schema(
   {
-    name: String,
+    name: {
+      type: String,
+      required: true,
+    },
     todo: [{ type: Schema.Types.ObjectId, ref: 'Todo' }],
     user: { type: Schema.Types.ObjectId, ref: 'User' },
   },
