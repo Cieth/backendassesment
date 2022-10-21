@@ -8,7 +8,7 @@ const User = require('../user/user.model');
 
 const createListHandler = async (req, res) => {
   const { name } = req.body;
-  const { userId } = req.params;
+  const userId = req.user;
   try {
     const user = await User.findById(userId);
     if (!user) {

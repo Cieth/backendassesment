@@ -8,8 +8,8 @@ exports.auth = (req, res, next) => {
   }
 
   try {
-    const verified = jwt.verify(authHeader, process.env.SECRET_KEY);
-    req.user = verified;
+    const { id } = jwt.verify(authHeader, process.env.SECRET_KEY);
+    req.user = id;
     next();
   } catch (e) {
     res.status(401).json({ error: 'Invalid-token' });

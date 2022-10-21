@@ -1,5 +1,5 @@
 const Router = require('express');
-//const { auth } = require('../../utils/auth');
+const { auth } = require('../../utils/auth');
 const {
   createListHandler,
   showListsHandler,
@@ -9,9 +9,9 @@ const {
 
 const router = Router();
 
-router.get('/:listId', showListHandler);
-router.get('/', showListsHandler);
-router.post('/:userId', createListHandler);
-router.delete('/:listId', deleteListHandler);
+router.get('/:listId', auth, showListHandler);
+router.get('/', auth, showListsHandler);
+router.post('/', auth, createListHandler);
+router.delete('/:listId', auth, deleteListHandler);
 
 module.exports = router;
