@@ -63,7 +63,7 @@ const showListHandler = async (req, res) => {
   } catch (error) {
     return res
       .status(400)
-      .json({ message: 'List could not be found', data: list });
+      .json({ message: 'List could not be found', error: error.message });
   }
 };
 
