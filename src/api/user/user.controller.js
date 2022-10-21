@@ -32,14 +32,7 @@ const signUpHandler = async (req, res) => {
 const signInHandler = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await signIn(email).populate({
-      path: 'list',
-      select: 'name todo',
-      populate: {
-        path: 'todo',
-        select: 'title description',
-      },
-    });
+    const user = await signIn(email);
     if (!user) {
       throw new Error(`This user does not exist`);
     }
@@ -53,7 +46,7 @@ const signInHandler = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: 'login successful', data: { user, token } });
+      .json({ message: 'login successful', data: { token } });
   } catch (error) {
     return res
       .status(400)
