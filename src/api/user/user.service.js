@@ -4,6 +4,12 @@ const signUp = (user, encPassword) => {
   return User.create({ ...user, password: encPassword });
 };
 
-const signIn = (user, password) => {};
+const signIn = (email) => {
+  return User.findOne({ email });
+};
 
-module.exports = { signUp };
+const listOfUsers = () => {
+  return User.find();
+};
+
+module.exports = { signUp, signIn, listOfUsers };

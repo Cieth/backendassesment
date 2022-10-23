@@ -1,4 +1,13 @@
 const { model, Schema, models } = require('mongoose');
+//const validate = require('mongoose-validator');
+
+/* const passwordValidator = [
+  validate({
+    validator: 'isLength',
+    arguments: [7, 50],
+    message: 'Password should have at least 7 characters',
+  }),
+]; */
 
 const userSchema = new Schema(
   {
@@ -23,6 +32,7 @@ const userSchema = new Schema(
       type: 'string',
       required: true,
     },
+    list: [{ type: Schema.Types.ObjectId, ref: 'List' }],
   },
   { timestamps: true }
 );
