@@ -1,7 +1,7 @@
 /*
 -------------------------------------------------
     This test will work once, then u will need 
-    to change the user information and list id's 
+    to change the user information, the list id's 
 -------------------------------------------------
 °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
     The test will create a user and login, then it will
@@ -11,10 +11,11 @@
 If the test fails: 
   -there is commented code in order to give further orientation
   -There is also commented console.logs in case you need to find id's 
+   or the token to uptdate it in the variable 
 Could be: 
-   Place another token
-   Change the information of the user in the object
-   change the id of the list to delete 
+-Change the information of the user in the object
+-change the id of the list to delete 
+-Place another token
 
     */
 const req = require('supertest');
@@ -32,12 +33,12 @@ describe('App', () => {
 
   const commonHeaders = {
     authorization:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNGRjOWIzYTIzNTgyYzNhYmYyNTc0OSIsImlhdCI6MTY2NjM3NDc3OCwiZXhwIjoxNjY2NDYxMTc4fQ.BXBjk-EWDjoJ-imxr3FwIM4nLi7TwCNULMUWbQyU7Uk',
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNGRjOWIzYTIzNTgyYzNhYmYyNTc0OSIsImlhdCI6MTY2NjU0NDAxMCwiZXhwIjoxNjY2NjMwNDEwfQ.w13eCzlob1AFuQmju9w4wJlnIncQtefKr7UtjFx5pxU',
     'X-Testing-Value': 1,
     'X-Common-Header': 'value',
   };
   //Need to change this info every test or you'll get an 400 bc it's already created->
-  let userCreate = { email: 'test1997@gmail.com', password: 'testestest' };
+  let userCreate = { email: 'test199764@gmail.com', password: 'testestest' };
 
   it('Should create a user with success code', async () => {
     const res = await req(app)
