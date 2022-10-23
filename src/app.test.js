@@ -1,6 +1,6 @@
 /*
 -------------------------------------------------
-    This test will work once, then u will need 
+    This test will work once(with my database), then u will need 
     to change the user information, the list id's 
 -------------------------------------------------
 °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
